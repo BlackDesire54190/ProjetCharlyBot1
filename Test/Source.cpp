@@ -1,6 +1,8 @@
 #include "dl_dxf.h"
 #include "filtreDxf.h"
-#include "roro.cpp"
+#include "LSerie.h"
+#include <vector>
+#include "filtreDxf.h"
 
 using namespace std;
 
@@ -19,6 +21,8 @@ void search() {
 	dxf.addVertex(&Filtre);
 }
 
+
+
 int main() {
 	filtreDxf Filtre;
 	DL_Dxf dxf;
@@ -32,15 +36,27 @@ int main() {
 		vector<string>Texte = Filtre.Texte;
 
 
-		/*for (int i = 0; i < Coordonnee.size(); i++) {
+		for (size_t i = 0; i < Coordonnee.size(); i++) {
 			cout <<Texte[i]<<":" <<Coordonnee[i]<<endl;
-		}*/
+		}
 
 
+		vector<string>trame;
 
-		test();
-
-
+		for (size_t a = 0; a < Coordonnee.size(); a++) {
+			if (Texte[a] == "Nombre de polyligne") {
+				int nbpoly = Coordonnee[a];
+				for (int b = 0; b < nbpoly; b++) {
+					if (Texte[b] == "Sommets") {
+						int nbsommets = Coordonnee[b];
+						for (int c = 0; c < nbsommets; c++) {
+							trame.push_back(Coordonnee[c]); // A VERIFIER
+						}
+					}
+				}
+			}
+		}
+		
 
 
 		cin >> a;
