@@ -102,7 +102,7 @@ public:
     virtual void addXDataInt(int, int) {}
     virtual void addDictionary(const DL_DictionaryData&) {}
     virtual void addDictionaryEntry(const DL_DictionaryEntryData&) {}
-    virtual void endEntity() {}
+	virtual void endEntity() {}
     virtual void addComment(const std::string&) {}
     virtual void setVariableVector(const std::string&,  double, double, double, int) {}
     virtual void setVariableString(const std::string&, const std::string&, int) {}
