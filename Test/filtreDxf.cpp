@@ -2,14 +2,21 @@
 #include <cmath>
 using namespace std;
 
-
+/*L'organisation de la fonction se fera comme suit:
+tout d'abord le type (point,Ligne, Cercle..) dans le vecteur Texte
+ils iront a la place i de mon vecteur Texte a la meme place i dans le 
+vecteur Coordonnées se trouve le nombre de Coordonées qui suivront 
+dans le vecteur CoordAbs se trouve la valeur i de chaque nombre de coordonnée
+et de chaque type de dessin
+*/
 filtreDxf::filtreDxf()
 {
 }
 
-
+// la valeur data fait appel a la fonction dans le fichier dl_entities.h
 void filtreDxf::addPoint(const DL_PointData & data)
 {
+
 	Texte.push_back("Points, Donnee =");
 	int s = Texte.size();
 	CoordAbs.push_back(s - 1);
@@ -68,6 +75,7 @@ void filtreDxf::addEllipse(const DL_EllipseData& data) {
 	float deg1, deg2;
 	deg1 = data.angle1;
 	deg2 = data.angle2;
+	//transformation de radian en degrés
 	deg1 = (180 * deg1) / M_PI;
 	deg2 = (180 * deg2) / M_PI;
 	Texte.push_back("Debut de l'angle en deg");
@@ -164,19 +172,12 @@ void filtreDxf::addCircle(const DL_CircleData & data)
 
 
 
-//void filtreDxf::addBlock(const DL_BlockData& data) {
-//	Texte.push_back("BlockData, Donnees");
-//	int s = Texte.size();
-//	CoordAbs.push_back(s - 1);
-//	Coordonnee.push_back(3);
-//	Texte.push_back("Base Point x");
-//	Coordonnee.push_back(data.bpx);
-//	Texte.push_back("Base Point y");
-//	Coordonnee.push_back(data.bpy);
-//	Texte.push_back("Base Point z");
-//	Coordonnee.push_back(data.bpz);
-//}
+
+
 filtreDxf::~filtreDxf()
 {
-
+	//destruction des vecteurs à la fin du programmeù
+	Texte;
+	CoordAbs;
+	Coordonnee;
 }
