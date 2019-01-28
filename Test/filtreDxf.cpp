@@ -32,7 +32,7 @@ void filtreDxf::addText(const DL_TextData & data)
 	Texte.push_back("|"+nom+"|");
 	Coordonnee.push_back(0);
 	Texte.push_back("Rotation de l'angle par rapport a sa valeur par defaut");
-	Coordonnee.push_back(data.angle);
+	Coordonnee.push_back(data.angle); 
 	Texte.push_back("Coordonnee du point d'alignement en X");
 	Coordonnee.push_back(data.apx);
 	Texte.push_back("Coordonnee du point d'alignement en Y");
@@ -107,7 +107,7 @@ void filtreDxf::addLayer(const DL_LayerData & data)
 
 void filtreDxf::addPolyline(const DL_PolylineData & data)
 {
-	Texte.push_back("Nombre de polyligne suivante");
+	Texte.push_back("Nombre de polyligne");
 	Coordonnee.push_back(data.number);
 }
 

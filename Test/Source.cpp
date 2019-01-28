@@ -28,7 +28,7 @@ int main() {
 	DL_Dxf dxf;
 	
 
-	int a;
+	
 	if (dxf.in(("C:\\Users\\CCF\\source\\repos\\BlackDesire54190\\ProjetCharlyBot1\\polyligne.dxf"), &Filtre)) {
 		search();
 		vector<float>Coordonnee = Filtre.Coordonnee;
@@ -36,36 +36,48 @@ int main() {
 		vector<string>Texte = Filtre.Texte;
 
 
-		for (size_t i = 0; i < Coordonnee.size(); i++) {
-			cout <<Texte[i]<<":" <<Coordonnee[i]<<endl;
-		}
+		//for (size_t i = 0; i < Coordonnee.size(); i++) {
+		//	cout <<Texte[i]<<":" <<Coordonnee[i]<<endl;
+		//}
 
+		cout << endl << endl << endl;
 
 		vector<string>trame;
 
-		for (size_t a = 0; a < Coordonnee.size(); a++) {
+		int a = 0;
+		int b = 0;
+		int c = 0;
+		int nbsommets = 0;
+		int nbpoly = 0;
+		for (a; a < Coordonnee.size(); a++) {
 			if (Texte[a] == "Nombre de polyligne") {
-				int nbpoly = Coordonnee[a];
-				for (int b = 0; b < nbpoly; b++) {
-					if (Texte[b] == "Sommets") {
-						int nbsommets = Coordonnee[b];
-						for (int c = 0; c < nbsommets; c++) {
-							trame.push_back(Coordonnee[c]); // A VERIFIER
+				nbpoly = Coordonnee[a] + a;
+				b = b + a;
+				for (b; a < nbpoly; a++) {
+					if (Texte[a] == "Sommets") {
+						
+						nbsommets = Coordonnee[a] + a + 1;
+						a = a + 1;
+						for (a; a < nbsommets; a++) {
+							ostringstream os;
+							os << Coordonnee[a];
+							trame.push_back(os.str()); // A VERIFIER
 						}
 					}
 				}
 			}
 		}
+
 		
 
-
-		cin >> a;
+		int stop;
+		cin >> stop;
 	}
 	else {
 		
 		cout << "Le Fihcier n'existe pas" << endl;
-		
-		cin >> a;
+		int stop;
+		cin >> stop;
 	}
 	return 0;
 }
